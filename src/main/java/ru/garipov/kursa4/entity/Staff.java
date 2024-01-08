@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Getter
 @Setter
@@ -28,10 +29,8 @@ public class Staff {
     @Column(name = "appointment")
     private String appointment;
 
-    // Измените тип поля на String
-    @Column(name = "phonenumber")
-    private String phoneNumber;
-
+    @Column(name = "phonenumber", columnDefinition = "DECIMAL(20)")
+    private BigInteger phonenumber;
 
     @Column(name = "email") // Добавляем поле для email
     private String email;
@@ -52,6 +51,10 @@ public class Staff {
     @Column(name = "created_by")
     private String createdBy;
 
+    // Геттер для поля createdBy
+    public String getCreatedBy() {
+        return createdBy;
+    }
 
     // Сеттер для поля createdBy
     public void setCreatedBy(String createdBy) {
